@@ -15,6 +15,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          POSTGRES_USER: circleci-demo-go
           POSTGRES_PASSWORD: postgres
         ports:
         - 5432:5432

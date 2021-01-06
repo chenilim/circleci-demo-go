@@ -42,4 +42,4 @@ jobs:
       run: go test -v ./...
       env:
         CONTACTS_DB_URL: "postgres://circleci-demo-go:dbpassword@localhost:5432/circle_test?sslmode=disable"
-        CONTACTS_DB_MIGRATIONS: ${{env.GITHUB_WORKSPACE}}/db/migrations
+        CONTACTS_DB_MIGRATIONS: ${{github.workspace}}/db/migrations

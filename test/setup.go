@@ -50,13 +50,22 @@ func SetupDB(t *testing.T) *service.Database {
 	if err != nil {
 		log.Println(err)
 	}
-	fmt.Printf("CWD: %v", path)
+	fmt.Printf("CWD: %v\n", path)
 
 	path, err = os.Executable()
 	if err != nil {
 		log.Println(err)
 	}
-	fmt.Printf("exec path: %v", path)
+	fmt.Printf("exec path: %v\n", path)
+
+	home := os.Getenv("HOME")
+	fmt.Printf("HOME: %v\n", home)
+
+	workspace := os.Getenv("GITHUB_WORKSPACE")
+	fmt.Printf("GITHUB_WORKSPACE: %v\n", workspace)
+
+	eventPath := os.Getenv("GITHUB_EVENT_PATH")
+	fmt.Printf("GITHUB_EVENT_PATH: %v\n", eventPath)
 
 	databaseUrl := os.Getenv("CONTACTS_DB_URL")
 	require.NotEmpty(t, databaseUrl, "CONTACTS_DB_URL must be set!")

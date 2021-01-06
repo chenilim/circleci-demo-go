@@ -2,6 +2,8 @@ package test
 
 import (
 	"database/sql"
+	"fmt"
+	"log"
 	"net/http/httptest"
 	"os"
 	"testing"
@@ -44,6 +46,18 @@ func SetupEnv(t *testing.T) *Env {
 
 // SetupDB initializes a test database, performing all migrations.
 func SetupDB(t *testing.T) *service.Database {
+	path, err := os.Getwd()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Printf("CWD: %v", path)
+
+	path, err = os.Executable()
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Printf("exec path: %v", path)
+
 	databaseUrl := os.Getenv("CONTACTS_DB_URL")
 	require.NotEmpty(t, databaseUrl, "CONTACTS_DB_URL must be set!")
 

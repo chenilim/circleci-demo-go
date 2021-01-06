@@ -16,7 +16,7 @@ jobs:
         image: postgres
         env:
           POSTGRES_USER: circleci-demo-go
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: dbpassword
         ports:
         - 5432:5432
         # Set health checks to wait until postgres has started
@@ -40,4 +40,4 @@ jobs:
     - name: Test
       run: go test -v ./...
       env:
-        CONTACTS_DB_URL: "postgres://circleci-demo-go@localhost:5432/circle_test?sslmode=disable"
+        CONTACTS_DB_URL: "postgres://circleci-demo-go:dbpassword@localhost:5432/circle_test?sslmode=disable"
